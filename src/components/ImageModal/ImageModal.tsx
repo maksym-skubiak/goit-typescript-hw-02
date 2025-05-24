@@ -1,8 +1,15 @@
 import Modal from "react-modal";
+import { UnsplashImage } from "../../types";
 
 Modal.setAppElement("#root");
 
-function ImageModal({ isOpen, onClose, image }) {
+interface Props {
+  isOpen: boolean;
+  onClose: () => void;
+  image: UnsplashImage | null;
+}
+
+function ImageModal({ isOpen, onClose, image }: Props) {
   if (!image) return null;
 
   return (
@@ -11,14 +18,8 @@ function ImageModal({ isOpen, onClose, image }) {
       onRequestClose={onClose}
       contentLabel="Image Modal"
       style={{
-        content: {
-          maxWidth: "500px",
-          margin: "auto",
-          padding: "1rem",
-        },
-        overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.75)",
-        },
+        content: { maxWidth: "500px", margin: "auto", padding: "1rem" },
+        overlay: { backgroundColor: "rgba(0, 0, 0, 0.75)" },
       }}
     >
       <img
